@@ -1,5 +1,5 @@
 ===============================================
-git-remote-arc: Remote helper script for archive-backed git submodules
+git-remote-arc: archive-backed git submodules
 ===============================================
 .. image:: http://img.shields.io/badge/license-BSL%201.0-blue.svg?style=flat-square
     :alt: BSL 1.0 License
