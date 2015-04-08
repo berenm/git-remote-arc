@@ -7,7 +7,7 @@ git-remote-arc: archive-backed git submodules
 
 USAGE
 ````````````````````````````
-1. Download git-remote-arc to a folder located in your path.
+1. Download git-remote-arc to a folder located in your path:
 
 .. code:: bash
 
@@ -15,7 +15,7 @@ USAGE
   sudo chmod +x /usr/local/bin/git-remote-arc
 
 
-2. Add submodules from any archive
+2. Add submodules from any archive:
 
 .. code:: bash
 
