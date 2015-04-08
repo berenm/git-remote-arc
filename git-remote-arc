@@ -14,7 +14,7 @@ cd $GIT_DIR
 
 function download {
   type wget &>/dev/null && wget --quiet --show-progress "$1" --output-document "$2" && return 0
-  type curl &>/dev/null && curl --progress --location "$1" --output-file "$2" && return 0
+  type curl &>/dev/null && curl --progress --location "$1" --output "$2" && return 0
   die "Could not find curl or wget to download the archive!"
 }
 
