@@ -9,10 +9,18 @@ USAGE
 ````````````````````````````
 1. Download git-remote-arc to a folder located in your path.
 
-   .. code:: bash
-   
-     wget http://git.io/git-remote-arc -P /usr/local/bin
-     chmod +x /usr/local/bin/git-remote-arc
+.. code:: bash
+
+  sudo wget http://git.io/git-remote-arc -P /usr/local/bin/
+  sudo chmod +x /usr/local/bin/git-remote-arc
+
+
+2. Add submodules from any archive
+
+.. code:: bash
+
+  git submodule add arc::https://github.com/berenm/git-remote-arc/archive/master.tar.gz git-remote-arc
+
 
 COPYING INFORMATION
 ````````````````````````````
