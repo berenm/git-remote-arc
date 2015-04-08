@@ -10,6 +10,7 @@ USAGE
 1. Download git-remote-arc to a folder located in your path.
 
    .. code:: bash
+   
      wget http://git.io/git-remote-arc -P /usr/local/bin
      chmod +x /usr/local/bin/git-remote-arc
 
