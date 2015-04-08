@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
+
+set -e
+
+function die {
+  echo "$@" >&2 && exit -1
+}
+
+[ -z "$GIT_DIR" ] && die "GIT_DIR not set!"
+cd $GIT_DIR
+
+function download {
+  type wget &>/dev/null && wget --quiet --show-progress "$1" --output-document $filename && return 0
+  type curl &>/dev/null && curl --progress --location "$1" --output-file $filename && return 0
+  die "Could not find curl or wget to download the archive!"
+}
+
+function extract {
+  __arc=$(realpath "$1")
+  type tar &>/dev/null && mkdir "$2" && pushd "$2" && tar xf "$__arc" &>/dev/null && popd && return 0
+  type 7za &>/dev/null && 7za x "-o$2" "$__arc" &>/dev/null && return 0
+  die "Could not find 7za or tar to extract the archive!"
+}
+
+filename=$(basename "$2")
+foldname=.arcdata
+[ ! -f "$filename" ] && download "$2" "$filename"
+[ ! -d "$foldname" ] && extract "$filename" "$foldname"
+
+while read line
+do
+  case "$line" in
+    done) exit 0;;
+    option*)
+      echo "unsupported"
+      ;;
+    capabilities*)
+      echo "import"
+      echo "refspec refs/heads/*:refs/arc/*"
+      echo "option"
+      echo ""
+      ;;
+    list*)
+      echo "@refs/heads/master HEAD"
+      echo "? refs/heads/master"
+      echo ""
+      ;;
+    import*)
+      echo "feature done"
+      echo "feature force"
+
+      mark=1
+      find $foldname -type f | while read file
+      do
+        echo "blob"
+        echo "mark :$mark"
+        echo "data" $(stat -c%s "$file")
+        cat "$file"
+        echo ""
+        mark=$(($mark + 1))
+      done
+
+      echo "commit refs/arc/master"
+      echo "committer git-remote-arc <git-remote-arc@example.org> $(date "+%s %z")"
+      echo "data <<EOM"
+      echo "Imported from $2"
+      echo "EOM"
+      echo "deleteall"
+
+      mark=1
+      prefix=$(find $foldname -type d -exec bash -c "echo -ne '{} '; ls '{}' | wc -l" \; | sed -re '/1$/d; s/ .+$//' | head -n1)
+      find $foldname -type f | while read file
+      do
+        echo "M" $((100000 + $(stat -c%a "$file"))) ":$mark ${file#$prefix/}"
+        mark=$(($mark + 1))
+      done
+      echo "done"
+      ;;
+    "");;
+  esac
+done
