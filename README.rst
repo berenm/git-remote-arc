@@ -22,7 +22,7 @@ USAGE
   git submodule add arc::https://github.com/berenm/git-remote-arc/archive/master.tar.gz git-remote-arc
 
 
-COPYING INFORMATION
+LICENSE
 ````````````````````````````
 
  This is free and unencumbered software released into the public domain.
