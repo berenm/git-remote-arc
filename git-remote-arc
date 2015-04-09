@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Distributed under the Boost Software License, Version 1.0.
-# See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
+# This is free and unencumbered software released into the public domain.
+# See accompanying file UNLICENSE or copy at http://unlicense.org/UNLICENSE
 
 set -e
 

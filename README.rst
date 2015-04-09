@@ -1,8 +1,8 @@
 ===============================================
 git-remote-arc: archive-backed git submodules
 ===============================================
-.. image:: http://img.shields.io/badge/license-BSL%201.0-blue.svg?style=flat-square
-    :alt: BSL 1.0 License
+.. image:: http://img.shields.io/badge/license-UNLICENSE-green.svg?style=flat-square
+    :alt: Unlicense
     :target: http://www.boost.org/LICENSE_1_0.txt
 
 USAGE
@@ -25,6 +25,6 @@ USAGE
 COPYING INFORMATION
 ````````````````````````````
 
- Distributed under the Boost Software License, Version 1.0.
+ This is free and unencumbered software released into the public domain.
 
- See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
+ See accompanying file UNLICENSE or copy at http://unlicense.org/UNLICENSE
