@@ -3,7 +3,7 @@ git-remote-arc: archive-backed git submodules
 ===============================================
 .. image:: http://img.shields.io/badge/license-UNLICENSE-brightgreen.svg?style=flat-square
     :alt: Unlicense
-    :target: http://www.boost.org/LICENSE_1_0.txt
+    :target: http://unlicense.org/UNLICENSE
 
 USAGE
 ````````````````````````````
