@@ -30,6 +30,23 @@ The script expects that ``wget`` or ``curl``, and ``tar`` or ``7za`` are
 available in the ``PATH``. Archive type support depend on the available
 tools for extraction.
 
+WHY
+````````````````````````````
+
+This can be an easy way to implement some kind of package management to your
+projects, instead of cloning full repositories.
+
+Combined with ``git config diff.submodule diff`` to display changes in submodules,
+you can also track modifications done over dependencies sources.
+
+Also, although you will not be able to push anything to the remote obviously, you
+can still add changes, branches and commits to the local submodule. Or add a normal
+git remote later on to push these changes.
+
+``git pull`` / ``git submodule update --remote`` will also work as expected and
+get the latest version of the archive if it was changed upstream. The change will
+be reflected by a different commit hash.
+
 LICENSE
 ````````````````````````````
 
