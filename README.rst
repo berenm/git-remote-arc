@@ -14,13 +14,21 @@ USAGE
   sudo wget http://git.io/git-remote-arc -P /usr/local/bin/
   sudo chmod +x /usr/local/bin/git-remote-arc
 
+2. Configure git to allow ``arc`` protocol for submodules:
 
-2. Add submodules from any archive:
+.. code:: bash
+
+  git config --global protocol.arc.allow always
+
+3. Add submodules from any archive:
 
 .. code:: bash
 
   git submodule add arc::https://github.com/berenm/git-remote-arc/archive/master.tar.gz git-remote-arc
 
+The script expects that ``wget`` or ``curl``, and ``tar`` or ``7za`` are
+available in the ``PATH``. Archive type support depend on the available
+tools for extraction.
 
 LICENSE
 ````````````````````````````
